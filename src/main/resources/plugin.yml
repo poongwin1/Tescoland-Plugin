@@ -1,0 +1,10 @@
+name: Fatherland
+version: ${project.version}
+main: me.poongwin.fatherland.Fatherland
+api-version: 1.16
+authors: [ poongwin ]
+description: Main plugin of the Fatherland server!
+commands:
+  map:
+    description: Gives the link to the server map.
+    usage: /<command>
