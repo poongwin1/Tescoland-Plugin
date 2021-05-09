@@ -24,7 +24,6 @@ public class Map implements CommandExecutor {
             Player player = (Player) sender;
 
             if (player.isOp() || player.hasPermission("fatherland.map")){
-                //player.sendMessage(ChatColor.GRAY + "Click this link to view the web-map: " + ChatColor.AQUA + "https://bit.ly/3e8FkC5");
                 TextComponent mainComponent = new TextComponent( "Click this link to view the web-map: " );
                 mainComponent.setColor( ChatColor.GRAY );
                 TextComponent subComponent = new TextComponent( "https://bit.ly/3e8FkC5" );
