@@ -1,7 +1,11 @@
 package me.poongwin.fatherland.commands;
 
 import me.poongwin.fatherland.Fatherland;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,8 +24,15 @@ public class Map implements CommandExecutor {
             Player player = (Player) sender;
 
             if (player.isOp() || player.hasPermission("fatherland.map")){
-                player.sendMessage(ChatColor.GRAY + "Click this link to view the web-map: https://bit.ly/3e8FkC5");
-
+                //player.sendMessage(ChatColor.GRAY + "Click this link to view the web-map: " + ChatColor.AQUA + "https://bit.ly/3e8FkC5");
+                TextComponent mainComponent = new TextComponent( "Click this link to view the web-map: " );
+                mainComponent.setColor( ChatColor.GRAY );
+                TextComponent subComponent = new TextComponent( "https://bit.ly/3e8FkC5" );
+                subComponent.setColor( ChatColor.AQUA );
+                subComponent.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "Click me!" ).create() ) );
+                subComponent.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, "https://bit.ly/3e8FkC5" ) );
+                mainComponent.addExtra( subComponent );
+                player.spigot().sendMessage( mainComponent );
                 return true;
             } else{
                 player.sendMessage(ChatColor.RED + "You do not have permission to use this command");
