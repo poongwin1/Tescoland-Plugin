@@ -32,15 +32,12 @@ public class Discord implements CommandExecutor {
                 subComponent.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, "https://bit.ly/39jwmjZ" ) );
                 mainComponent.addExtra( subComponent );
                 player.spigot().sendMessage( mainComponent );
-                return true;
             } else{
                 player.sendMessage(ChatColor.RED + "You do not have permission to use this command");
-                return true;
             }
-
         } else{
             fatherland.getLogger().info("You have to be a player to use this command");
-            return true;
         }
+        return true;
     }
 }
