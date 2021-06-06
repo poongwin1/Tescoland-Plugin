@@ -35,7 +35,6 @@ public class Discord implements CommandExecutor {
             } else{
                 player.sendMessage(ChatColor.RED + "You do not have permission to use this command");
             }
-
         } else{
             fatherland.getLogger().info("You have to be a player to use this command");
         }
