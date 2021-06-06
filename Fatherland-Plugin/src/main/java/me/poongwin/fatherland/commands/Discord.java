@@ -18,7 +18,7 @@ public record Discord(Fatherland fatherland) implements CommandExecutor {
         if (sender instanceof Player player) {
 
             if (player.isOp() || player.hasPermission("fatherland.discord")) {
-                TextComponent mainComponent = new TextComponent("Click this link to join our Discord server:");
+                TextComponent mainComponent = new TextComponent("Click this link to join our Discord: ");
                 mainComponent.setColor(ChatColor.GRAY);
                 TextComponent subComponent = new TextComponent("https://bit.ly/39jwmjZ");
                 subComponent.setColor(ChatColor.AQUA);
