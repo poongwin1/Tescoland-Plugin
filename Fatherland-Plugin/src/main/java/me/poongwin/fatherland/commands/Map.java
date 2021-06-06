@@ -11,32 +11,26 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Map implements CommandExecutor {
-    private final Fatherland fatherland;
-
-    public Map(Fatherland fatherland){
-        this.fatherland = fatherland;
-    }
+public record Map(Fatherland fatherland) implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player){
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
 
-            if (player.isOp() || player.hasPermission("fatherland.map")){
-                TextComponent mainComponent = new TextComponent( "Click this link to view the web-map: " );
-                mainComponent.setColor( ChatColor.GRAY );
-                TextComponent subComponent = new TextComponent( "https://bit.ly/3e8FkC5" );
-                subComponent.setColor( ChatColor.AQUA );
-                subComponent.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "Click me!" ).create() ) );
-                subComponent.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, "https://bit.ly/3e8FkC5" ) );
-                mainComponent.addExtra( subComponent );
-                player.spigot().sendMessage( mainComponent );
-            } else{
+            if (player.isOp() || player.hasPermission("fatherland.map")) {
+                TextComponent mainComponent = new TextComponent("Click this link to view the web-map: ");
+                mainComponent.setColor(ChatColor.GRAY);
+                TextComponent subComponent = new TextComponent("https://bit.ly/3e8FkC5");
+                subComponent.setColor(ChatColor.AQUA);
+                subComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click me!").create()));
+                subComponent.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://bit.ly/3e8FkC5"));
+                mainComponent.addExtra(subComponent);
+                player.spigot().sendMessage(mainComponent);
+            } else {
                 player.sendMessage(ChatColor.RED + "You do not have permission to use this command");
             }
 
-        } else{
+        } else {
             fatherland.getLogger().info("You have to be a player to use this command");
         }
         return true;
