@@ -3,13 +3,15 @@ package me.poongwin.fatherland.commands;
 import me.poongwin.fatherland.Fatherland;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Objects;
 
 public record Discord(Fatherland fatherland) implements CommandExecutor {
 
@@ -18,16 +20,15 @@ public record Discord(Fatherland fatherland) implements CommandExecutor {
         if (sender instanceof Player player) {
 
             if (player.isOp() || player.hasPermission("fatherland.discord")) {
-                TextComponent mainComponent = new TextComponent("Click this link to join our Discord: ");
-                mainComponent.setColor(ChatColor.GRAY);
-                TextComponent subComponent = new TextComponent("https://bit.ly/39jwmjZ");
-                subComponent.setColor(ChatColor.AQUA);
-                subComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click me!").create()));
-                subComponent.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://bit.ly/39jwmjZ"));
-                mainComponent.addExtra(subComponent);
-                player.spigot().sendMessage(mainComponent);
+                TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("discord.message")))));
+                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("discord.link")))));
+                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, fatherland.getConfig().getString("discord.link")));
+                link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("discord.hover")))))));
+                link.setColor(ChatColor.AQUA);
+                message.addExtra(link);
+                player.spigot().sendMessage(message);
             } else {
-                player.sendMessage(ChatColor.RED + "You do not have permission to use this command");
+                player.sendMessage(Objects.requireNonNull(fatherland.getConfig().getString(ChatColor.translateAlternateColorCodes('&', "no-permission"))));
             }
         } else {
             fatherland.getLogger().info("You have to be a player to use this command");

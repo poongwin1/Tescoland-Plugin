@@ -1,0 +1,11 @@
+reload-message: "&a&lReloaded Fatherland!"
+no-permission: "&cYou do not have permission to use this command"
+
+map:
+  message: "&7Click this link to view the web-map: "
+  link: "https://bit.ly/3e8FkC5"
+  hover: "&6Click Me!"
+discord:
+  message: "&7Click this link to join our Discord: "
+  link: "https://bit.ly/39jwmjZ"
+  hover: "&6Click Me!"

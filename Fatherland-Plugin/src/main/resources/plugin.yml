@@ -11,4 +11,7 @@ commands:
   discord:
     description: Gives the link to join out Discord server.
     usage: /<command>
+  fatherland:
+    description: The main Fatherland command.
+    usage: /<command>
 
