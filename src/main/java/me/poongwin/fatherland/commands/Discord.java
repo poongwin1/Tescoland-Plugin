@@ -21,10 +21,9 @@ public record Discord(Fatherland fatherland) implements CommandExecutor {
 
             if (player.isOp() || player.hasPermission("fatherland.discord")) {
                 TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("discord.message")))));
-                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("discord.link")))));
+                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("discord.link-text")))));
                 link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, fatherland.getConfig().getString("discord.link")));
                 link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("discord.hover")))))));
-                link.setColor(ChatColor.AQUA);
                 message.addExtra(link);
                 player.spigot().sendMessage(message);
             } else {

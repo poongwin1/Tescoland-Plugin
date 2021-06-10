@@ -21,10 +21,9 @@ public record Map(Fatherland fatherland) implements CommandExecutor {
 
             if (player.isOp() || player.hasPermission("fatherland.map")) {
                 TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.message")))));
-                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.link")))));
+                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.link-text")))));
                 link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, fatherland.getConfig().getString("map.link")));
                 link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.hover")))))));
-                link.setColor(ChatColor.AQUA);
                 message.addExtra(link);
                 player.spigot().sendMessage(message);
             } else {
