@@ -1,7 +1,7 @@
 name: Fatherland
 version: ${project.version}
 main: me.poongwin.fatherland.Fatherland
-api-version: 1.16
+api-version: 1.17
 authors: [ poongwin ]
 description: Main plugin of the Fatherland server!
 commands:
@@ -14,4 +14,3 @@ commands:
   fatherland:
     description: The main Fatherland command.
     usage: /<command>
-
