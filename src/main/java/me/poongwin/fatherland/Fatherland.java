@@ -2,10 +2,12 @@ package me.poongwin.fatherland;
 
 import me.poongwin.fatherland.commands.Discord;
 import me.poongwin.fatherland.commands.Map;
+import me.poongwin.fatherland.commands.Ping;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -14,9 +16,12 @@ public final class Fatherland extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+        int pluginId = 11765;
+        Metrics metrics = new Metrics(this, pluginId);
         this.saveDefaultConfig();
         Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map(this));
         Objects.requireNonNull(getServer().getPluginCommand("discord")).setExecutor(new Discord(this));
+        Objects.requireNonNull(getServer().getPluginCommand("ping")).setExecutor(new Ping(this));
     }
 
     @Override
@@ -25,7 +30,7 @@ public final class Fatherland extends JavaPlugin {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("fatherland")){
             if (!sender.hasPermission("fatherland.reload")){
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
@@ -33,11 +38,9 @@ public final class Fatherland extends JavaPlugin {
                 return true;
             }
             if (args.length == 0){
-                // /fatherland
-                sender.sendMessage(ChatColor.RED + "Usage: /fatherland reload");
+                sender.sendMessage(ChatColor.RED + "A subcommand is required.");
                 return true;
             }
-            // /fatherland reload
             if (args[0].equalsIgnoreCase("reload")) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(this.getConfig().getString("reload-message"))));
                 this.reloadConfig();

@@ -11,3 +11,5 @@ discord:
   link: "https://bit.ly/39jwmjZ"
   link-text: "&bhttps://bit.ly/39jwmjZ"
   hover: "&6Click Me!"
+ping:
+  message: "&7Ping: &c%ping%"
