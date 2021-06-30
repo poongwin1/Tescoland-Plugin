@@ -6,10 +6,5 @@ map:
   link: "https://bit.ly/3e8FkC5"
   link-text: "&bhttps://bit.ly/3e8FkC5"
   hover: "&6Click Me!"
-discord:
-  message: "&7Click this link to join our Discord: "
-  link: "https://bit.ly/39jwmjZ"
-  link-text: "&bhttps://bit.ly/39jwmjZ"
-  hover: "&6Click Me!"
 ping:
   message: "&7Ping: &c%ping%"

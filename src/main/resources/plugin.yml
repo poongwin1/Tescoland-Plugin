@@ -8,9 +8,6 @@ commands:
   map:
     description: Gives the link to the server map.
     usage: /<command>
-  discord:
-    description: Gives the link to join out Discord server.
-    usage: /<command>
   ping:
     description: Gives the player's ping.
     usage: /<command>

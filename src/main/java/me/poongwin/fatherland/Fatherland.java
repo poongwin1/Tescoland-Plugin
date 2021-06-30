@@ -1,6 +1,5 @@
 package me.poongwin.fatherland;
 
-import me.poongwin.fatherland.commands.Discord;
 import me.poongwin.fatherland.commands.Map;
 import me.poongwin.fatherland.commands.Ping;
 import net.md_5.bungee.api.ChatColor;
@@ -20,7 +19,6 @@ public final class Fatherland extends JavaPlugin {
         Metrics metrics = new Metrics(this, pluginId);
         this.saveDefaultConfig();
         Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map(this));
-        Objects.requireNonNull(getServer().getPluginCommand("discord")).setExecutor(new Discord(this));
         Objects.requireNonNull(getServer().getPluginCommand("ping")).setExecutor(new Ping(this));
     }
 
