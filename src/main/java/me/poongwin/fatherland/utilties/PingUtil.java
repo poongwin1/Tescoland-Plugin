@@ -12,8 +12,7 @@ public class PingUtil {
         }
         try {
             assert p != null;
-            int ping = p.getPing();
-            return ping;
+            return p.getPing();
         } catch (Exception e) {
             e.printStackTrace();
         }

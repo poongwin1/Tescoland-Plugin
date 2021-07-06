@@ -14,17 +14,11 @@ public final class Fatherland extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
         int pluginId = 11765;
         Metrics metrics = new Metrics(this, pluginId);
         this.saveDefaultConfig();
         Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map(this));
         Objects.requireNonNull(getServer().getPluginCommand("ping")).setExecutor(new Ping(this));
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
     }
 
     @Override
