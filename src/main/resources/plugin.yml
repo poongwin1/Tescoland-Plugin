@@ -8,9 +8,6 @@ commands:
   map:
     description: Gives the link to the server map.
     usage: /<command>
-  ping:
-    description: Gives the player's ping.
-    usage: /<command>
   fatherland:
     description: The main Fatherland command.
     usage: /<command>
