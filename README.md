@@ -1,8 +1,6 @@
-# Fatherland-Plugin
-The official plugin of the Fatherland server.
+# Fatherland Plugin
+## The official plugin of the Fatherland server.
 
-Features:
-
+## Features:<br />
 /map - Provides the link to BlueMap<br />
-/discord - Provides the link to the Discord server<br />
 /ping - Provides the player's current ping
