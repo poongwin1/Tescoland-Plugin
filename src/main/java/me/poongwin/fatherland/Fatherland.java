@@ -13,13 +13,11 @@ public final class Fatherland extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
         int pluginId = 11765;
         Metrics metrics = new Metrics(this, pluginId);
         this.saveDefaultConfig();
         Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map(this));
     }
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("fatherland")){

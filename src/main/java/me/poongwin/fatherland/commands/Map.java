@@ -19,7 +19,6 @@ public record Map(Fatherland fatherland) implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (sender instanceof Player player) {
-
             if (player.isOp() || player.hasPermission("fatherland.map")) {
                 TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.message")))));
                 TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.link-text")))));
