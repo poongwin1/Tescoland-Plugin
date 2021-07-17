@@ -13,8 +13,6 @@ public final class Fatherland extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        int pluginId = 11765;
-        Metrics metrics = new Metrics(this, pluginId);
         this.saveDefaultConfig();
         Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map(this));
     }
