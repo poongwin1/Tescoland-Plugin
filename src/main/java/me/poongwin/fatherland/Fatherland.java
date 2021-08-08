@@ -1,6 +1,7 @@
 package me.poongwin.fatherland;
 
-import me.poongwin.fatherland.commands.Map;
+import me.poongwin.fatherland.commands.SlowMap;
+import me.poongwin.fatherland.commands.FastMap;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -14,7 +15,8 @@ public final class Fatherland extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
-        Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map(this));
+        Objects.requireNonNull(getServer().getPluginCommand("slowmap")).setExecutor(new SlowMap(this));
+        Objects.requireNonNull(getServer().getPluginCommand("fastmap")).setExecutor(new FastMap(this));
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String[] args) {

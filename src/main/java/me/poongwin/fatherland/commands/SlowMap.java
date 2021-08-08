@@ -14,16 +14,16 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public record Map(Fatherland fatherland) implements CommandExecutor {
+public record SlowMap(Fatherland fatherland) implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (sender instanceof Player player) {
             if (player.isOp() || player.hasPermission("fatherland.map")) {
-                TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.message")))));
-                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.link-text")))));
-                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, fatherland.getConfig().getString("map.link")));
-                link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("map.hover")))))));
+                TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("slowmap.message")))));
+                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("slowmap.link-text")))));
+                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, fatherland.getConfig().getString("slowmap.link")));
+                link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(fatherland.getConfig().getString("slowmap.hover")))))));
                 message.addExtra(link);
                 player.spigot().sendMessage(message);
             } else {

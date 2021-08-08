@@ -5,8 +5,11 @@ api-version: 1.17
 authors: [ poongwin ]
 description: Main plugin of the Fatherland server!
 commands:
-  map:
-    description: Gives the link to the server map.
+  slowmap:
+    description: Gives the link to the slow 3D server map.
+    usage: /<command>
+  fastmap:
+    description: Gives the link to the fast 2D server map.
     usage: /<command>
   fatherland:
     description: The main Fatherland command.
