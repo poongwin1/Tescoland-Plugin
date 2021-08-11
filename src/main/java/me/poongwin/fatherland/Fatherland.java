@@ -14,7 +14,7 @@ public final class Fatherland extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
-        Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map());
+        Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map(this));
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String[] args) {
@@ -31,6 +31,7 @@ public final class Fatherland extends JavaPlugin {
             if (args[0].equalsIgnoreCase("reload")) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(this.getConfig().getString("reload-message"))));
                 this.reloadConfig();
+                return true;
             }
         }
         return false;
