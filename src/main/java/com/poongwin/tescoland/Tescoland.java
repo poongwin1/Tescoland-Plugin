@@ -1,6 +1,6 @@
-package me.poongwin.fatherland;
+package com.poongwin.tescoland;
 
-import me.poongwin.fatherland.commands.Map;
+import com.poongwin.tescoland.commands.Map;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public final class Fatherland extends JavaPlugin {
+public final class Tescoland extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -18,8 +18,8 @@ public final class Fatherland extends JavaPlugin {
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String[] args) {
-        if (label.equalsIgnoreCase("fatherland")){
-            if (!sender.hasPermission("fatherland.reload")){
+        if (label.equalsIgnoreCase("tescoland")){
+            if (!sender.hasPermission("tescoland.reload")){
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
                         Objects.requireNonNull(this.getConfig().getString("no-permission"))));
                 return true;
@@ -31,8 +31,10 @@ public final class Fatherland extends JavaPlugin {
             if (args[0].equalsIgnoreCase("reload")) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(this.getConfig().getString("reload-message"))));
                 this.reloadConfig();
-                return true;
+            } else{
+                sender.sendMessage(ChatColor.RED + "Invalid subcommand.");
             }
+            return true;
         }
         return false;
     }

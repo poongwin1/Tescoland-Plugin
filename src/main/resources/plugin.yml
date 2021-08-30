@@ -1,13 +1,14 @@
-name: Fatherland
+name: Tescoland
 version: ${project.version}
-main: me.poongwin.fatherland.Fatherland
+main: com.poongwin.tescoland.Tescoland
 api-version: 1.17
 authors: [ poongwin ]
-description: Main plugin of the Fatherland server!
+description: The official plugin of the Tescoland server.
+website: https://discord.gg/sZd9gAXKZb
 commands:
   map:
     description: Gives the links to both 3D and 2D maps.
     usage: /<command>
-  fatherland:
-    description: The main Fatherland command.
+  tescoland:
+    description: The main Tescoland command.
     usage: /<command>
