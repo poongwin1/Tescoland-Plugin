@@ -7,7 +7,7 @@ description: The official plugin of the Tescoland server.
 website: https://discord.gg/sZd9gAXKZb
 commands:
   map:
-    description: Gives the links to both 3D and 2D maps.
+    description: Gives the links to the web-map.
     usage: /<command>
   tescoland:
     description: The main Tescoland command.

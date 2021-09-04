@@ -18,37 +18,21 @@ public record Map(Tescoland tescoland) implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("map")){
-            if (!sender.hasPermission("tescoland.map")){
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        Objects.requireNonNull(tescoland.getConfig().getString("no-permission"))));
-                return true;
-            }
-            if (args.length == 0){
-                sender.sendMessage(ChatColor.RED + "Valid subcommands are: '3D' and '2D'");
-                return true;
-            }
-            if (!(sender instanceof Player player)){
+            if (sender instanceof Player player) {
+                if (player.isOp() || player.hasPermission("fatherland.map")) {
+                    TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.message")))));
+                    TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.link-text")))));
+                    link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, tescoland.getConfig().getString("map.link")));
+                    link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.hover")))))));
+                    message.addExtra(link);
+                    player.spigot().sendMessage(message);
+                } else {
+                    player.sendMessage(Objects.requireNonNull(tescoland.getConfig().getString(ChatColor.translateAlternateColorCodes('&', "no-permission"))));
+                }
+            } else {
                 tescoland.getLogger().info("You have to be a player to use this command");
-                return true;
             }
-            if (args[0].equalsIgnoreCase("3d")) {
-                TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("3dmap.message")))));
-                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("3dmap.link-text")))));
-                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, tescoland.getConfig().getString("3dmap.link")));
-                link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("3dmap.hover")))))));
-                message.addExtra(link);
-                player.sendMessage(message);
-                return true;
-            }
-            if (args[0].equalsIgnoreCase("2d")) {
-                TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("2dmap.message")))));
-                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("2dmap.link-text")))));
-                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, tescoland.getConfig().getString("2dmap.link")));
-                link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("2dmap.hover")))))));
-                message.addExtra(link);
-                player.sendMessage(message);
-                return true;
-            }
+            return true;
         }
         return false;
     }
