@@ -19,16 +19,12 @@ public record Map(Tescoland tescoland) implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("map")){
             if (sender instanceof Player player) {
-                if (player.isOp() || player.hasPermission("fatherland.map")) {
-                    TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.message")))));
-                    TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.link-text")))));
-                    link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, tescoland.getConfig().getString("map.link")));
-                    link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.hover")))))));
-                    message.addExtra(link);
-                    player.spigot().sendMessage(message);
-                } else {
-                    player.sendMessage(Objects.requireNonNull(tescoland.getConfig().getString(ChatColor.translateAlternateColorCodes('&', "no-permission"))));
-                }
+                TextComponent message = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.message")))));
+                TextComponent link = new TextComponent((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.link-text")))));
+                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, tescoland.getConfig().getString("map.link")));
+                link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text((ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(tescoland.getConfig().getString("map.hover")))))));
+                message.addExtra(link);
+                player.spigot().sendMessage(message);
             } else {
                 tescoland.getLogger().info("You have to be a player to use this command");
             }
