@@ -1,7 +1,7 @@
 name: Tescoland
 version: ${project.version}
 main: com.poongwin.tescoland.Tescoland
-api-version: 1.17
+api-version: 1.18
 authors: [ poongwin ]
 description: The official plugin of the Tescoland server.
 website: https://discord.gg/sZd9gAXKZb
