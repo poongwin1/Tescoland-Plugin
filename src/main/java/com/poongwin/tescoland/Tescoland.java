@@ -1,5 +1,6 @@
 package com.poongwin.tescoland;
 
+import com.poongwin.tescoland.commands.Discord;
 import com.poongwin.tescoland.commands.Map;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
@@ -15,6 +16,7 @@ public final class Tescoland extends JavaPlugin {
     public void onEnable() {
         this.saveDefaultConfig();
         Objects.requireNonNull(getServer().getPluginCommand("map")).setExecutor(new Map(this));
+        Objects.requireNonNull(getServer().getPluginCommand("discord")).setExecutor(new Discord(this));
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, String label, String[] args) {
