@@ -6,7 +6,7 @@
 
     <groupId>com.poongwin</groupId>
     <artifactId>Tescoland</artifactId>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
     <packaging>jar</packaging>
 
     <name>Tescoland</name>
